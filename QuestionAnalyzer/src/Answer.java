@@ -83,14 +83,19 @@ public class Answer {
 			}
 			
 		}
-		
+		double confidence = 0;
 		if(positiveHits<negativeHits)
 		{
-			return "No";
+			confidence = negativeHits/(double)positiveHits;
+			confidence = (confidence-1)/confidence;
+			return "No: "+confidence;
+			
 		}
 		else
 		{
-			return "Yes";
+			confidence = positiveHits/(double)negativeHits;
+			confidence = (confidence-1)/confidence;
+			return "Yes: "+confidence;
 		}
 		
 	}
