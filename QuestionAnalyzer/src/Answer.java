@@ -6,7 +6,7 @@ public class Answer {
 			"ALERTNESS",   "AMBITION",   "ANTICIPATION",    "APPRECIATE", "ASSERTIVE",   "ATTENTIVENESS",   "AUDACITY",   "AWARE",   "AUTHENTIC",   "ABRACADABRA",   "ATTRACTION",   "ALLOW", "ALLOWING",   "AFFECTION",   "ABSORBED",   "ALERT",   "AMAZED",   "AWE",   "ARDENT",   "AMAZING",   "AWESOME",   "AROUSED",   "ASTONISHED","ASTONISHING",   "AMUSED","ALOHA",   "ADORE",    "ADMIRE",   "ADMIRABLE",   "ALLURE",    "ANGEL",    "ALTRUISM",   "ABOUND"
 			, "BEATIFY",   "BEATITUDE",   "BENEFICIAL",   "BENEFIT",   "BENEVOLENT",   "BELOVED",   "BEST",   "BETTER",
 			"COOPERATION",   "COURAGE",   "COURTESY", "COURTEOUS",    "CURIOUS",   "CHAKRA",   "COOL",   "CLEAR",
-			"DIRECTION",   "DELICATE",   "DECENT",   "DESIRABLE",   "DELICIOUS",   "DO",   "DREAM",
+			"DIRECTION",   "DELICATE",   "DECENT",   "DESIRABLE",   "DELICIOUS",   "DREAM",
 			"EMPATHY", "EMPATHIZE", "EMPHATIC",   "EASY", "EASILY", "EASIER",   "EDUCATE",
 			"FLAWLESS", "FAVORITE",   "FAIRNESS",   "FAMILY",   "FIDELITY",   "FLEXIBILITY",
 			"GOOD",   "GOODNESS",   "GIVING", "GENERATE",   "GENIAL",   "GENIUS",   "GENUINE",   "GIFT",   "GIVE",
@@ -17,7 +17,7 @@ public class Answer {
 			"LIKE",   "LAUGH",   "LEARN", "LEARNING",   "LIFE",   "LIVE",   "LUXURY",   "LONGEVITY",   "LOYALTY",
 			"MEANING",   "MORE",   "MAGNIFICENT",   "MAJESTY",   "MANY",   "MARVELOUS",   "MERIT",   "MOTIVATE",
 			"NOBLE", "NEAT", "NICE",
-			"OPTIMIST", "OPTIMISTIC",   "OUTSTANDING",   "OK",   "ON",   "ONWARDS",  "OPEN",
+			"OPTIMIST", "OPTIMISTIC",   "OUTSTANDING",   "OK",   "ONWARDS",  "OPEN",
 			"POSITIVE", "PROGRESS", "PERSISTENT", "PERFECT", 
 			"QUALITY",
 			"RESPECT",   "RADIANT",   "READY", "READINESS",   "REAL", "REASON",   "RECOMMEND",   "REFRESH",
@@ -26,7 +26,7 @@ public class Answer {
 			"UNIFICATION",   "UNIQUE",   "UPLIFT",   "ULTIMATE",   "UNCONDITIONAL",   "UPGRADE",   "USEFUL",
 			"VITALITY",   "VALUE",  "VIRTUOUS",   "VALID",   "VERIFY",   "VERY",   "VIABLE",
 			"WORTH", "WORTHY", "WORTHINESS",   "WEALTH",   "WARM", "WARMTH",  "WELCOME",
-	};
+	};//203
 	
 	private String[] negativeWords = {"No", "Not", "None", "Neither", "Absent", "Few", "doesn't", "don't",
 			"nobody", "Abysmal", "adverse", "alarming","angry","annoy","anxious","apathy","appalling","atrocious","awful", "bad","banal"
@@ -40,7 +40,7 @@ public class Answer {
 			,"severe","shoddy","shocking","sick","terrible","terrifying","threatening","unlucky","unpleasant","upset","unsatisfactory","worthless","zero"
 			
 			
-	};
+	};//125
 	
 			
 	
@@ -68,6 +68,7 @@ public class Answer {
 				if(answerArray.get(x).equalsIgnoreCase(positiveWords[y]))
 				{
 					positiveHits++;
+					System.out.println(answerArray.get(x));
 				}
 			}
 			
@@ -79,6 +80,7 @@ public class Answer {
 				if(answerArray.get(x).equalsIgnoreCase(negativeWords[y]))
 				{
 					negativeHits++;
+					System.out.println(answerArray.get(x));
 				}
 			}
 			
