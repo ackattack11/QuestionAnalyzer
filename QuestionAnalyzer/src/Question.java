@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 
 public class Question {
 	private String rawText, interrogative, type, keyword;
@@ -5,6 +6,8 @@ public class Question {
 	private String[] Types = {"yes/no", "person", "reason", "process", "date", "location"};
 	public Question(String q)
 	{
+		
+		
 		rawText = q;
 		interrogative = rawText.substring(0,rawText.indexOf(" "));
 		rawText = rawText.substring(rawText.indexOf(" ")+1);
@@ -27,6 +30,20 @@ public class Question {
 	{
 		return keyword;
 	}
+	public ArrayList<String> QtoArray()
+	{
+		ArrayList<String> Question = new ArrayList<String>();
+		String buffer = "";
+		for(int i = 0;i<rawText.length();i++)
+		{
+			buffer = rawText.substring(0, rawText.indexOf(" "));
+			Question.add(buffer);
+			rawText = rawText.substring(rawText.indexOf(" ")+1);
+		}
+		return Question;
+	}
+	
+	
 
 	
 }

@@ -13,9 +13,9 @@ public class Answer {
 			"HOPE", "HOPEFULNESS",   "HAPPINESS", "HAPPY",   "HARMONIOUS",
 			"IMAGINATION",   "INSPIRE", "INSPIRATION","INSPIRED",   "IDEA",   "INCREDIBLE",
 			"JOKE",   "JOLLY",   "JOVIAL",   "JUST",   "JUSTICE",   "JUBILANT",
-			"KINDNESS", "KIND",  "KISS",   "KNOWLEDGE",
-			"LIKE",   "LAUGH",   "LEARN", "LEARNING",   "LIFE",   "LIVE",   "LUXURY",   "LONGEVITY",   "LOYALTY",
-			"MEANING",   "MORE",   "MAGNIFICENT",   "MAJESTY",   "MANY",   "MARVELOUS",   "MERIT",   "MOTIVATE",
+			"KINDNESS", "KIND",  "KISS",
+			"LIKE",   "LAUGH",   "LEARN", "LEARNING",   "LIVE",   "LUXURY",   "LONGEVITY",   "LOYALTY",
+			"MEANING",   "MAGNIFICENT",   "MAJESTY",   "MARVELOUS",   "MERIT",   "MOTIVATE",
 			"NOBLE", "NEAT", "NICE",
 			"OPTIMIST", "OPTIMISTIC",   "OUTSTANDING",   "OK",   "ONWARDS",  "OPEN",
 			"POSITIVE", "PROGRESS", "PERSISTENT", "PERFECT", 
@@ -26,7 +26,7 @@ public class Answer {
 			"UNIFICATION",   "UNIQUE",   "UPLIFT",   "ULTIMATE",   "UNCONDITIONAL",   "UPGRADE",   "USEFUL",
 			"VITALITY",   "VALUE",  "VIRTUOUS",   "VALID",   "VERIFY",   "VERY",   "VIABLE",
 			"WORTH", "WORTHY", "WORTHINESS",   "WEALTH",   "WARM", "WARMTH",  "WELCOME",
-	};//203
+	};//199
 	
 	private String[] negativeWords = {"No", "Not", "None", "Neither", "Absent", "Few", "doesn't", "don't",
 			"nobody", "Abysmal", "adverse", "alarming","angry","annoy","anxious","apathy","appalling","atrocious","awful", "bad","banal"
@@ -50,9 +50,9 @@ public class Answer {
 		answerText = answerText +" ";
 		
 	}
-	public String evaluate()
+	public String evaluate(String endword)
 	{
-		int positiveHits = 0, negativeHits = 0;
+		int positiveHits = 0, negativeHits = 0, keywordHits = 0;
 		ArrayList<String> answerArray = new ArrayList<String>();
 		String parse = new String();
 		while (answerText.length() > 1)
@@ -60,6 +60,13 @@ public class Answer {
 			parse = answerText.substring(0 , answerText.indexOf(" "));
 			answerArray.add(parse);
 			answerText = answerText.substring(answerText.indexOf(" ")+1);
+		}
+		for(int x = 0;x<answerArray.size();x++)
+		{
+			if(endword.equals(answerArray.get(x)))
+			{
+				keywordHits++;
+			}
 		}
 		for(int x = 0;x < answerArray.size();x++)
 		{
@@ -90,15 +97,16 @@ public class Answer {
 		{
 			confidence = negativeHits/(double)positiveHits;
 			confidence = (confidence-1)/confidence;
-			return "No: "+confidence;
+			return "No: "+confidence+"  "+(keywordHits/(double)answerArray.size());
 			
 		}
 		else
 		{
 			confidence = positiveHits/(double)negativeHits;
 			confidence = (confidence-1)/confidence;
-			return "Yes: "+confidence;
+			return "Yes: "+confidence+"  "+(keywordHits/(double)answerArray.size());
 		}
+		
 		
 	}
 	
