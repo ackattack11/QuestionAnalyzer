@@ -13,7 +13,7 @@ public class Main {
 		Scanner sc = new Scanner(System.in);
 		String text = sc.nextLine();
 		Question question1 = new Question(text);
-		ArrayList<String> qformat = question1.QtoArray();
+		//ArrayList<String> qformat = question1.QtoArray();
 		System.out.println(question1.toString());
 		//TESTING GOOGLE ZONE
 		String google = "http://www.google.com/search?q=";
@@ -36,7 +36,7 @@ public class Main {
 		Answer output = new Answer(answer);
 		
 		
-		System.out.println("Answer: "+output.evaluate(qformat.get(qformat.size()-1)));
+		System.out.println("Answer: "+output.evaluate());
 		
 		
 

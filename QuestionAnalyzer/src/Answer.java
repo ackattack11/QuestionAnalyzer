@@ -50,10 +50,11 @@ public class Answer {
 		answerText = answerText +" ";
 		
 	}
-	public String evaluate(String endword)
+	public String evaluate()
 	{
-		int positiveHits = 0, negativeHits = 0, keywordHits = 0;
+		int positiveHits = 0, negativeHits = 0;
 		ArrayList<String> answerArray = new ArrayList<String>();
+		
 		String parse = new String();
 		while (answerText.length() > 1)
 		{
@@ -61,6 +62,7 @@ public class Answer {
 			answerArray.add(parse);
 			answerText = answerText.substring(answerText.indexOf(" ")+1);
 		}
+		/*
 		for(int x = 0;x<answerArray.size();x++)
 		{
 			if(endword.equals(answerArray.get(x)))
@@ -68,6 +70,7 @@ public class Answer {
 				keywordHits++;
 			}
 		}
+		*/
 		for(int x = 0;x < answerArray.size();x++)
 		{
 			for(int y = 0;y<positiveWords.length;y++)
@@ -97,14 +100,14 @@ public class Answer {
 		{
 			confidence = negativeHits/(double)positiveHits;
 			confidence = (confidence-1)/confidence;
-			return "No: "+confidence+"  "+(keywordHits/(double)answerArray.size());
+			return "No: "+confidence;
 			
 		}
 		else
 		{
 			confidence = positiveHits/(double)negativeHits;
 			confidence = (confidence-1)/confidence;
-			return "Yes: "+confidence+"  "+(keywordHits/(double)answerArray.size());
+			return "Yes: "+confidence;
 		}
 		
 		

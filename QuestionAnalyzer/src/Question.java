@@ -30,7 +30,7 @@ public class Question {
 	{
 		return keyword;
 	}
-	public ArrayList<String> QtoArray()
+	/*public ArrayList<String> QtoArray()
 	{
 		ArrayList<String> Question = new ArrayList<String>();
 		String buffer = "";
@@ -42,6 +42,7 @@ public class Question {
 		}
 		return Question;
 	}
+	*/
 	
 	
 
