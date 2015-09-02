@@ -24,7 +24,7 @@ public class Answer {
 			"SECURITY",   "SUSTAIN",   "SAVE", "SAVING",   "SIMPLE",
 			"TRUST" ,   "TACT",   "TEACH",   "TEAM",   "THANKFUL", "THANK",
 			"UNIFICATION",   "UNIQUE",   "UPLIFT",   "ULTIMATE",   "UNCONDITIONAL",   "UPGRADE",   "USEFUL",
-			"VITALITY",   "VALUE",  "VIRTUOUS",   "VALID",   "VERIFY",   "VERY",   "VIABLE",
+			"VITALITY",   "VALUE",  "VIRTUOUS",   "VALID",   "VERIFY",   "VIABLE",
 			"WORTH", "WORTHY", "WORTHINESS",   "WEALTH",   "WARM", "WARMTH",  "WELCOME",
 	};//199
 	
@@ -78,7 +78,7 @@ public class Answer {
 				if(answerArray.get(x).equalsIgnoreCase(positiveWords[y]))
 				{
 					positiveHits++;
-					System.out.println(answerArray.get(x));
+					//System.out.println(answerArray.get(x));
 				}
 			}
 			
@@ -90,7 +90,7 @@ public class Answer {
 				if(answerArray.get(x).equalsIgnoreCase(negativeWords[y]))
 				{
 					negativeHits++;
-					System.out.println(answerArray.get(x));
+					//System.out.println(answerArray.get(x));
 				}
 			}
 			
