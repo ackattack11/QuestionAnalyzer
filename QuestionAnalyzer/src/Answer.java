@@ -22,7 +22,7 @@ public class Answer {
 			"QUALITY",
 			"RESPECT",   "RADIANT",   "READY", "READINESS",   "REAL", "REASON",   "RECOMMEND",   "REFRESH",
 			"SECURITY",   "SUSTAIN",   "SAVE", "SAVING",   "SIMPLE",
-			"TRUST" ,   "TACT",   "TEACH",   "TEAM",   "THANKFUL", "THANK",
+			"TRUST" ,   "TACT",   "TEACH",   "TEAM",   "THANKFUL",
 			"UNIFICATION",   "UNIQUE",   "UPLIFT",   "ULTIMATE",   "UNCONDITIONAL",   "UPGRADE",   "USEFUL",
 			"VITALITY",   "VALUE",  "VIRTUOUS",   "VALID",   "VERIFY",   "VIABLE",
 			"WORTH", "WORTHY", "WORTHINESS",   "WEALTH",   "WARM", "WARMTH",  "WELCOME",
@@ -96,16 +96,30 @@ public class Answer {
 			
 		}
 		double confidence = 0;
-		if(positiveHits<negativeHits)
+		if(positiveHits<=negativeHits)
 		{
+			if(positiveHits == 0)
+			{
+				positiveHits = 1;
+				negativeHits = 1;
+			}
+			//System.out.println(negativeHits+"/"+positiveHits);
 			confidence = negativeHits/(double)positiveHits;
+			
 			confidence = (confidence-1)/confidence;
 			return "No: "+confidence;
 			
 		}
 		else
 		{
+			if(negativeHits == 0)
+			{
+				positiveHits = 1;
+				negativeHits = 1;
+			}
+				
 			confidence = positiveHits/(double)negativeHits;
+			
 			confidence = (confidence-1)/confidence;
 			return "Yes: "+confidence;
 		}

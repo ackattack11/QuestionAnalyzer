@@ -26,19 +26,14 @@ public class Main {
 		    
 		String[] urls = new String[links.size()];
 		String[] answers = new String[links.size()];
+		String[] finalAnswers = new String[links.size()];
 		
 		for(int x = 0;x<links.size();x++)
 		{
 			urls[x] = links.get(x).absUrl("href");
 			urls[x] = URLDecoder.decode(urls[x].substring(urls[x].indexOf('=') + 1, urls[x].indexOf('&')), "UTF-8");
 		}
-		/*
-		String url = links.get(0).absUrl("href"); 
-		String url2 = links.get(1).absUrl("href");
-		//System.out.println(url2);
-		url = URLDecoder.decode(url.substring(url.indexOf('=') + 1, url.indexOf('&')), "UTF-8");
-		url2 = URLDecoder.decode(url2.substring(url2.indexOf('=')+1, url2.indexOf('&')), "UTF-8");
-		*/
+		
 		
 		for(int x = 0;x<links.size();x++)
 		{
@@ -48,29 +43,56 @@ public class Main {
 			String answer = doc.body().text();
 			//System.out.println("Answer: "+answer);
 			Answer output = new Answer(answer);
-			System.out.println("Answer: "+output.evaluate());
+			finalAnswers[x] = output.evaluate();
+			System.out.println("Answer: "+finalAnswers[x]);
 			}
 			catch(Exception e)
 			{
-				System.out.println("No response");
+				System.out.println("Could not connect");
+				finalAnswers[x] = "Could not connect";
 			}
 		}
-		/*
-		Document doc2 = Jsoup.connect(url2).get();
-		String answer = doc.body().text();
-		String answer2 = doc2.body().text();
-		//answer = answer.substring(answer.indexOf("the"));
+		double finalConfidence = 0;
+		for(int x = 0;x<finalAnswers.length;x++)
+		{
+			double cvalue = 0;
+			String a = finalAnswers[x];
+			if(a.substring(0,1).equalsIgnoreCase("Y"))
+			{
+				cvalue = Double.parseDouble(a.substring(5));
+				finalConfidence += cvalue;
+			}
+			else if(a.substring(0, 1).equalsIgnoreCase("N"))
+			{
+				cvalue = Double.parseDouble(a.substring(4));
+				finalConfidence -= cvalue;
+			}
+			else
+			{
+				finalConfidence -= .75;
+			}
+			//System.out.println(finalConfidence);
+			
+		}
+		if(finalConfidence > 1)
+		{
+			finalConfidence*=1.5;
+			finalConfidence = (finalConfidence-1.5)/finalConfidence;
+			System.out.println("Yes: "+finalConfidence);
+		}
+		else if(finalConfidence < 1)
+		{
+			finalConfidence*=1.5;
+			finalConfidence = Math.abs(finalConfidence);
+			finalConfidence = (finalConfidence-1.5)/finalConfidence;
+			System.out.println("No: "+finalConfidence);
+		}
+		else
+		{
+			System.out.println("very unsure: "+finalConfidence);
+		}
 		
-		System.out.println("Answer: " + answer);
 		
-		
-		
-		
-		System.out.println("Answer: "+output.evaluate());
-		System.out.println("Answer: "+answer2);
-		output = new Answer(answer2);
-		System.out.println("Answer: "+output.evaluate());
-		*/
 
 		  
 	}
