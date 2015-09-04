@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Answer {
 	private String answerText;
-	private String[] positiveWords = {"yes", "correct", "true", "ABLE",   "ACCEPT", "ACCEPTANCE", "ACCEPTABLE", "ACCEPTED", "ACCEPTING",   "ACTION",   "ACTIVATE",   "ACTIVE",   "ADD",   "ADDITION",   "ADMIRABLE", "ADORABLE",   "ADVANTAGE",   "AFFIRM",   "AGELESS",   "AGREE",   "AGREEABLE",   "AID",   "AIM",   "ABUNDANCE",   "ACCOUNTABILITY",   "ACCOMPLISHMENT", "ACCOMPLISH",   "ACCURACY",   "ACHIEVEMENT",  "ACHIEVE",   "ACKNOWLEDGEMENT",   "ADAPTABILITY",   "ADVENTURE",   "AGILITY",   
+	private String[] positiveWords = {"yes", "correct", "true","right", "ABLE",   "ACCEPT", "ACCEPTANCE", "ACCEPTABLE", "ACCEPTED", "ACCEPTING",   "ACTION",   "ACTIVATE",   "ACTIVE",   "ADD",   "ADDITION",   "ADMIRABLE", "ADORABLE",   "ADVANTAGE",   "AFFIRM",   "AGELESS",   "AGREE",   "AGREEABLE",   "AID",   "AIM",   "ABUNDANCE",   "ACCOUNTABILITY",   "ACCOMPLISHMENT", "ACCOMPLISH",   "ACCURACY",   "ACHIEVEMENT",  "ACHIEVE",   "ACKNOWLEDGEMENT",   "ADAPTABILITY",   "ADVENTURE",   "AGILITY",   
 			"ALERTNESS",   "AMBITION",   "ANTICIPATION",    "APPRECIATE", "ASSERTIVE",   "ATTENTIVENESS",   "AUDACITY",   "AWARE",   "AUTHENTIC",   "ABRACADABRA",   "ATTRACTION",   "ALLOW", "ALLOWING",   "AFFECTION",   "ABSORBED",   "ALERT",   "AMAZED",   "AWE",   "ARDENT",   "AMAZING",   "AWESOME",   "AROUSED",   "ASTONISHED","ASTONISHING",   "AMUSED","ALOHA",   "ADORE",    "ADMIRE",   "ADMIRABLE",   "ALLURE",    "ANGEL",    "ALTRUISM",   "ABOUND"
 			, "BEATIFY",   "BEATITUDE",   "BENEFICIAL",   "BENEFIT",   "BENEVOLENT",   "BELOVED",   "BEST",   "BETTER",
 			"COOPERATION",   "COURAGE",   "COURTESY", "COURTEOUS",    "CURIOUS",   "CHAKRA",   "COOL",   "CLEAR",
@@ -28,7 +28,7 @@ public class Answer {
 			"WORTH", "WORTHY", "WORTHINESS",   "WEALTH",   "WARM", "WARMTH",  "WELCOME",
 	};//199
 	
-	private String[] negativeWords = {"No", "Not", "None", "Neither", "Absent", "Few", "doesn't", "don't",
+	private String[] negativeWords = {"wrong","incorrect","No", "Not", "None", "Neither", "Absent", "Few", "doesn't", "don't",
 			"nobody", "Abysmal", "adverse", "alarming","angry","annoy","anxious","apathy","appalling","atrocious","awful", "bad","banal"
 			,"barbed","belligerent","bemoan","beneath","boring","broken", "callous","can't","clumsy","coarse","cold","cold-hearted","collapse"
 			,"confused","contradictory","contrary","corrosive","corrupt", "dead","decaying","damage","damaging","dastardly","deplorable",
