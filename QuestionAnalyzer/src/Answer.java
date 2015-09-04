@@ -101,6 +101,10 @@ public class Answer {
 			if(positiveHits == 0)
 			{
 				positiveHits = 1;
+				
+			}
+			if(negativeHits == 0)
+			{
 				negativeHits = 1;
 			}
 			//System.out.println(negativeHits+"/"+positiveHits);
@@ -112,12 +116,16 @@ public class Answer {
 		}
 		else
 		{
-			if(negativeHits == 0)
+			if(positiveHits == 0)
 			{
 				positiveHits = 1;
+				
+			}
+			if(negativeHits == 0)
+			{
 				negativeHits = 1;
 			}
-				
+			//System.out.println(positiveHits+"/"+negativeHits);	
 			confidence = positiveHits/(double)negativeHits;
 			
 			confidence = (confidence-1)/confidence;

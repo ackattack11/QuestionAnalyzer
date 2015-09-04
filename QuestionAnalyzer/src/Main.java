@@ -69,27 +69,26 @@ public class Main {
 			}
 			else
 			{
-				finalConfidence -= .75;
+				finalConfidence -= .5;
 			}
 			//System.out.println(finalConfidence);
 			
 		}
-		if(finalConfidence > 1)
+		if(finalConfidence > 0)
 		{
-			finalConfidence*=1.5;
-			finalConfidence = (finalConfidence-1.5)/finalConfidence;
+			finalConfidence = Math.log10(finalConfidence+1);
 			System.out.println("Yes: "+finalConfidence);
 		}
-		else if(finalConfidence < 1)
+		else if(finalConfidence < 0)
 		{
-			finalConfidence*=1.5;
+			
 			finalConfidence = Math.abs(finalConfidence);
-			finalConfidence = (finalConfidence-1.5)/finalConfidence;
+			finalConfidence = Math.log10(finalConfidence+1);
 			System.out.println("No: "+finalConfidence);
 		}
 		else
 		{
-			System.out.println("very unsure: "+finalConfidence);
+			System.out.println("0");
 		}
 		
 		
