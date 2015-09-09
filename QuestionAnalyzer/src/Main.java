@@ -1,28 +1,32 @@
 import java.util.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.*;
 import java.io.*;
 import org.jsoup.*;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.net.*;
-public class Main {
+public class Main{
 	
-	public static void main(String args[]) throws Exception
+	public static String runQuestion(String q) throws Exception
 	{
-		System.out.println("What is your question?");
-		Scanner sc = new Scanner(System.in);
-		String text = sc.nextLine();
+		String text = q;
 		Question question1 = new Question(text);
-		//ArrayList<String> qformat = question1.QtoArray();
-		System.out.println(question1.toString());
-		//TESTING GOOGLE ZONE
+		//System.out.println(question1.toString());
+		
 		String google = "http://www.google.com/search?q=";
 		String search = text;
 		String charset = "UTF-8";
 		String userAgent = "ExampleBot 1.0 (+http://example.com/bot)"; 
 		
 		Elements links = Jsoup.connect(google + URLEncoder.encode(search, charset)).userAgent(userAgent).get().select("li.g>h3>a");
-		//System.out.println(links.size());
+		
 		    
 		String[] urls = new String[links.size()];
 		String[] answers = new String[links.size()];
@@ -69,7 +73,7 @@ public class Main {
 			}
 			else
 			{
-				finalConfidence -= .5;
+				finalConfidence -= .75;
 			}
 			//System.out.println(finalConfidence);
 			
@@ -77,22 +81,61 @@ public class Main {
 		if(finalConfidence > 0)
 		{
 			finalConfidence = Math.log10(finalConfidence+1);
-			System.out.println("Yes: "+finalConfidence);
+			return ("Yes: "+finalConfidence);
+			
 		}
 		else if(finalConfidence < 0)
 		{
 			
 			finalConfidence = Math.abs(finalConfidence);
 			finalConfidence = Math.log10(finalConfidence+1);
-			System.out.println("No: "+finalConfidence);
+			return ("No: "+finalConfidence);
 		}
 		else
 		{
-			System.out.println("0");
+			return ("0");
 		}
 		
-		
-
-		  
 	}
+	
+	
+	public static void main(String args[]) throws Exception
+	{
+		JFrame frame = new JFrame("Yorn");
+		frame.setResizable(false);
+		frame.setLayout(null);
+		frame.setSize(500,300);
+		JLabel answerField = new JLabel("Hello! I am Yorn, how can I be of service?");
+		JTextField questionField = new JTextField();
+		questionField.setBounds(150, 100, 200, 20);
+		answerField.setBounds(140, 140, 220, 20);
+		   
+		questionField.addActionListener(new ActionListener(){
+
+		                public void actionPerformed(ActionEvent e){
+		                	answerField.setText("Calculating...");
+		                	frame.update(frame.getGraphics());
+		                        try {
+		                        	
+									answerField.setText(runQuestion(questionField.getText()));
+									
+									//questionField.setText("");
+								} catch (Exception e1) {
+									e1.printStackTrace();
+								}
+
+		                }});
+		
+		
+		
+		
+		
+		
+		frame.add(answerField);
+		frame.add(questionField);
+		frame.setVisible(true);
+		
+	
+	}
+	
 }
