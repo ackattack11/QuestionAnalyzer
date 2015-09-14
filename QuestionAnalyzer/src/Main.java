@@ -105,6 +105,7 @@ public class Main{
 		frame.setResizable(false);
 		frame.setLayout(null);
 		frame.setSize(500,300);
+		frame.setLocationRelativeTo(null);
 		JLabel answerField = new JLabel("Hello! I am Yorn, how can I be of service?");
 		JTextField questionField = new JTextField();
 		questionField.setBounds(150, 100, 200, 20);
@@ -125,12 +126,7 @@ public class Main{
 								}
 
 		                }});
-		
-		
-		
-		
-		
-		
+	
 		frame.add(answerField);
 		frame.add(questionField);
 		frame.setVisible(true);
