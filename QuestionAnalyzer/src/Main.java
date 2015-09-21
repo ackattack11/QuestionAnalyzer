@@ -1,9 +1,11 @@
 import java.util.*;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.image.BufferedImage;
 
 import javax.swing.*;
 import java.io.*;
@@ -12,6 +14,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import java.net.*;
+import java.text.DecimalFormat;
 public class Main{
 	
 	public static String runQuestion(String q) throws Exception
@@ -57,6 +60,7 @@ public class Main{
 			}
 		}
 		double finalConfidence = 0;
+		DecimalFormat fmt = new DecimalFormat("00.00%");
 		for(int x = 0;x<finalAnswers.length;x++)
 		{
 			double cvalue = 0;
@@ -81,7 +85,7 @@ public class Main{
 		if(finalConfidence > 0)
 		{
 			finalConfidence = Math.log10(finalConfidence+1);
-			return ("Yes: "+finalConfidence);
+			return ("Yes: "+fmt.format(finalConfidence));
 			
 		}
 		else if(finalConfidence < 0)
@@ -89,7 +93,7 @@ public class Main{
 			
 			finalConfidence = Math.abs(finalConfidence);
 			finalConfidence = Math.log10(finalConfidence+1);
-			return ("No: "+finalConfidence);
+			return ("No: "+fmt.format(finalConfidence));
 		}
 		else
 		{
@@ -98,19 +102,22 @@ public class Main{
 		
 	}
 	
-	
 	public static void main(String args[]) throws Exception
 	{
 		JFrame frame = new JFrame("Yorn");
 		frame.setResizable(false);
 		frame.setLayout(null);
-		frame.setSize(500,300);
+		frame.setSize(1000,600);
 		frame.setLocationRelativeTo(null);
-		JLabel answerField = new JLabel("Hello! I am Yorn, how can I be of service?");
+		JLabel answerField = new JLabel("<html>Hello! I am Yorn.<br> How can I be of service?<html>");
 		JTextField questionField = new JTextField();
 		questionField.setBounds(150, 100, 200, 20);
-		answerField.setBounds(140, 140, 220, 20);
-		   
+		answerField.setBounds(140, 140, 220, 40);
+		JLabel y = new JLabel();
+		y.setBounds(100, 100, 600, 600);
+		y.setIcon(new ImageIcon("C:/Users/Adam/Pictures/Y.png"));
+		frame.add(y);
+		
 		questionField.addActionListener(new ActionListener(){
 
 		                public void actionPerformed(ActionEvent e){
