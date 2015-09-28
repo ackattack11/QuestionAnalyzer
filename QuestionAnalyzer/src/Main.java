@@ -107,14 +107,18 @@ public class Main{
 		JFrame frame = new JFrame("Yorn");
 		frame.setResizable(false);
 		frame.setLayout(null);
-		frame.setSize(1000,600);
+		frame.setSize(800,500);
 		frame.setLocationRelativeTo(null);
+		JLabel background = new JLabel();
+		background.setBounds(0,0,800,500);
+		background.setIcon(new ImageIcon("C:/Users/Adam/Pictures/qmark.jpg"));
+		
 		JLabel answerField = new JLabel("<html>Hello! I am Yorn.<br> How can I be of service?<html>");
 		JTextField questionField = new JTextField();
-		questionField.setBounds(150, 100, 200, 20);
-		answerField.setBounds(140, 140, 220, 40);
+		questionField.setBounds(450, 210, 200, 20);
+		answerField.setBounds(440, 250, 220, 40);
 		JLabel y = new JLabel();
-		y.setBounds(100, 100, 600, 600);
+		y.setBounds(120, 100, 600, 230);
 		y.setIcon(new ImageIcon("C:/Users/Adam/Pictures/Y.png"));
 		frame.add(y);
 		
@@ -136,6 +140,7 @@ public class Main{
 	
 		frame.add(answerField);
 		frame.add(questionField);
+		frame.add(background);
 		frame.setVisible(true);
 		
 	
