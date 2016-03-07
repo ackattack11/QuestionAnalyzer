@@ -26,7 +26,7 @@ public class Main{
 		String google = "http://www.google.com/search?q=";
 		String search = text;
 		String charset = "UTF-8";
-		String userAgent = "ExampleBot 1.0 (+http://example.com/bot)"; 
+		String userAgent = "IceClimbers 1.0 (+http://example.com/bot)"; 
 		
 		Elements links = Jsoup.connect(google + URLEncoder.encode(search, charset)).userAgent(userAgent).get().select("li.g>h3>a");
 		    
